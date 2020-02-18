@@ -9,21 +9,21 @@ package main
 
 import (
 	"fmt"
+	"github.com/axgle/mahonia"
 	"github.com/showgo/csvparse"
 	"github.com/showgo/xutil"
 	"reflect"
 	"runtime"
 	"strconv"
 	"strings"
-	"./gofile"
+	"./csvdata"
 )
 
 // 根据配置表生成, 这里最好与结构体一起生成
 
 func main() {
-	
-  csvdata.SetServerconfCsvMapData()
-  fmt.Println("%t",csvdata.ServerconfCsv)
+	enc := mahonia.NewEncoder("gbk")
+	enc.ConvertString()
 }
 
 func SliceParse() {

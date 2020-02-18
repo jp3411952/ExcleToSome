@@ -2,6 +2,7 @@
 package csvdata
 
 import (
+	"fmt"
 	"github.com/showgo/csvparse"
 	"github.com/showgo/xutil"
 )
@@ -19,15 +20,11 @@ type  Serverconf struct {
 	RecMaxsize int //收包最大字节 字段名称  RecMaxsize
 }
 
-func AsynSetServerconfMapData() {
-	 go SetServerconfMapData()
-}
-
-func SetServerconfMapData() {
+func SetServerconfMapData(csvpath  string ) {
     if serverconfCsv == nil {
 		serverconfCsv = make(map[int]*Serverconf)
 	}
-	tem := getServerconfUsedData("./csv/")
+	tem := getServerconfUsedData(csvpath)
 	serverconfCsv  = tem
 }
 
@@ -39,6 +36,9 @@ func getServerconfUsedData(csvpath  string ) map[int]*Serverconf{
 		for filedName, filedval := range filedData {
 			isok := csvparse.SetFieldReflect(one, filedName, filedval)
 			xutil.IsError(isok)
+			if _,ok := tem[one.ServerId]; ok {
+				fmt.Println(one.ServerId,"重复")
+			}
 		}
 		tem[one.ServerId] = one
 	}
@@ -46,5 +46,8 @@ func getServerconfUsedData(csvpath  string ) map[int]*Serverconf{
 }
 
 func GetServerconfPtr(ServerId int) *Serverconf{
+    if _,ok := serverconfCsv[ServerId]; !ok  {
+		return nil
+	}
 	return serverconfCsv[ServerId]
 }

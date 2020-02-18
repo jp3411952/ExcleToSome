@@ -30,7 +30,7 @@ func ToCsv(exclefileName string ,wg *sync.WaitGroup)  {
 
 
 func WriteToCsv(exclefileName string,excelContent [][]string)  {
-	if ChechAndMakeDir(csvoutdir) {
+	if !xutil.MakeDirAll(csvoutdir) {
 		fmt.Printf("csvoutdir = ",csvoutdir)
 		return
 	}

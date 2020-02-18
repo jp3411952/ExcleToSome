@@ -35,7 +35,7 @@ func GetHandlerFunc(handleName string) HandleFunc {
 
 
 func ChechAndMakeDir(dir string) bool{
-	return xutil.StringIsNil(dir) || !xutil.MakeDirAll(dir)
+	return !xutil.MakeDirAll(dir)
 }
 
 // 读取excle文件

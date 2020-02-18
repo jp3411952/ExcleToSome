@@ -1,0 +1,6 @@
+dbname,ip,dbport,dbusername,dbpwd,maxopenconns,maxidleconns
+string,string,string,string,string,int,int
+#数据库名称,ip地址,端口号,用户名,密码,最大链接数,闲置连接数
+logindb,127.0.0.1,3306,root,zjy0822,2000,1000
+gamedb,127.0.0.2,3306,root,zjy0822,2000,1000
+logdb,127.0.0.3,3306,root,zjy0822,2000,1000
