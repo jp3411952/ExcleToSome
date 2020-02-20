@@ -49,7 +49,7 @@ func WriteToGoFile(exclefileName string, excelContent [][]string) {
 	
 	genGoLang.WriteImport([]string{"\"fmt\"","\"github.com/showgo/csvparse\"", "\"github.com/showgo/xutil\""})
 	// 定义变量
-	varName := fmt.Sprintf("%sCsv", exclefileName)
+	varName := fmt.Sprintf("%sCsv", structName)
 	vartypeName := fmt.Sprintf("map[%s]*%s", excelContent[1][0], structName)
 	genGoLang.WriteVar(varName, vartypeName)
 	genGoLang.WriteNextLine()
@@ -116,11 +116,12 @@ func WriteToGoFile(exclefileName string, excelContent [][]string) {
 	// 写方法4
 	funcInfo4 := generatepgl.NewFuncInfo(fmt.Sprintf("Get%sPtr", structName))
 	funcInfo4.FuncContent = fmt.Sprintf(
-		`    if _,ok := %s[%s]; !ok  {
+		`    data, ok := %s[%s];
+	if  !ok  {
 		return nil
 	}`,varName,excelContent[0][0])
 	funcInfo4.FuncParam[excelContent[0][0]] = excelContent[1][0]
-	returnName := fmt.Sprintf("%s[%s]",varName,excelContent[0][0])
+	returnName := fmt.Sprintf("%s","data")
 	funcInfo4.FuncReturn[returnName] = fmt.Sprintf("*%s", structName)
 	genGoLang.WriteFunc(funcInfo4)
 	
