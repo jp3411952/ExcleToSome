@@ -102,7 +102,7 @@ func WriteToGoFile(exclefileName string, excelContent [][]string) {
 	for _, filedData := range csvmapdata {
 		one := new(%s)
 		for filedName, filedval := range filedData {
-			isok := csvparse.SetFieldReflect(one, filedName, filedval)
+			isok := csvparse.ReflectSetField(one, filedName, filedval)
 			xutil.IsError(isok)
 			if _,ok := tem[one.%s]; ok {
 				fmt.Println(one.%s,"重复")
