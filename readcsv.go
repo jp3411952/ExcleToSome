@@ -10,8 +10,8 @@ package main
 import (
 	"fmt"
 	"github.com/axgle/mahonia"
-	"github.com/showgo/csvparse"
-	"github.com/showgo/xutil"
+	"github.com/wengo/csvparse"
+	"github.com/wengo/xutil"
 	"reflect"
 	"runtime"
 	"strconv"

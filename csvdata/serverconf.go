@@ -3,8 +3,8 @@ package csvdata
 
 import (
 	"fmt"
-	"github.com/showgo/csvparse"
-	"github.com/showgo/xutil"
+	"github.com/wengo/csvparse"
+	"github.com/wengo/xutil"
 )
 
 var serverconfCsv map[int]*Serverconf

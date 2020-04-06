@@ -10,7 +10,7 @@ package excletosome
 import (
 	"../generatepgl"
 	"fmt"
-	"github.com/showgo/xutil"
+	"github.com/wengo/xutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -44,21 +44,46 @@ func WriteToGoFile(exclefileName string, excelContent [][]string) {
 	structName := xutil.Capitalize(exclefileName)
 	// 一次写入多行
 	genGoLang := generatepgl.NewGenerGoLang()
-	genGoLang.WriteHead("//excle生成文件请勿修改\n", packagename)
-	genGoLang.WriteMoreNextLine(1)
-	
-	genGoLang.WriteImport([]string{"\"fmt\"","\"github.com/showgo/csvparse\"", "\"github.com/showgo/xutil\""})
+	//写文件头
+	writeHeder(genGoLang)
 	// 定义变量
-	varName := fmt.Sprintf("%sCsv", structName)
-	vartypeName := fmt.Sprintf("map[%s]*%s", excelContent[1][0], structName)
-	genGoLang.WriteVar(varName, vartypeName)
+	varName := fmt.Sprintf("%sAtomic", exclefileName)
+	csvtypeName := fmt.Sprintf("map[%s]*%s", excelContent[1][0], structName)
+	atomictype := fmt.Sprintf("atomic.Value")
+	genGoLang.WriteVar(varName, atomictype)
 	genGoLang.WriteNextLine()
 	// 写结构体内容
+	writeStruct(genGoLang, structName, excelContent, exclefileName)
+	setfunName := fmt.Sprintf("Set%sMapData", structName)
+	getfunName := fmt.Sprintf("get%sUsedData", structName)
+	// 写方法
+	setcsvData(setfunName, varName, getfunName, genGoLang)
+	getCsvData(getfunName, csvtypeName, excelContent, exclefileName, structName, genGoLang)
+	getAllfunName := fmt.Sprintf("GetAll%s", structName)
+	getptrFunc(structName, getAllfunName, excelContent, genGoLang)
+	getAllfun(getAllfunName, varName, csvtypeName, genGoLang)
+	
+	// 一次性写入所有数据
+	fs.WriteString(genGoLang.String())
+}
+
+func writeHeder(genGoLang *generatepgl.GenerGoLang) {
+	genGoLang.WriteHead("//excle生成文件请勿修改\n", packagename)
+	genGoLang.WriteMoreNextLine(1)
+	genGoLang.WriteImport([]string{
+		xutil.GetPackageStr("fmt"),
+		xutil.GetPackageStr("github.com/wengo/csvparse"),
+		xutil.GetPackageStr("github.com/wengo/xutil"),
+		xutil.GetPackageStr("github.com/wengo/xlog"),
+		xutil.GetPackageStr("sync/atomic")})
+}
+
+func writeStruct(genGoLang *generatepgl.GenerGoLang, structName string, excelContent [][]string, exclefileName string) {
 	genGoLang.WriteStruct(structName)
 	colCount := len(excelContent[0])
 	for i := 0; i < colCount; i++ {
 		if len(excelContent) < 3 {
-			fmt.Println(exclefileName,"小于三行")
+			fmt.Println(exclefileName, "小于三行")
 			continue
 		}
 		filed := generatepgl.FiledInfo{
@@ -70,34 +95,27 @@ func WriteToGoFile(exclefileName string, excelContent [][]string) {
 	}
 	// 结束括号
 	genGoLang.WriteEndBrace()
-	
-	setfunName := fmt.Sprintf("Set%sMapData", structName)
-	getfunName := fmt.Sprintf("get%sUsedData", structName)
-	// // 写方法1
-	// AsynSetfunName := fmt.Sprintf("AsynSet%sMapData", structName)
-	// funcInfo := generatepgl.NewFuncInfo(AsynSetfunName)
-	// funcInfo.FuncContent = fmt.Sprintf("\t go %s()", setfunName)
-	// genGoLang.WriteFunc(funcInfo)
-	
-	// 写方法2
+}
+
+func setcsvData(setfunName string, varName string, getfunName string, genGoLang *generatepgl.GenerGoLang) {
 	csvPath := "csvpath"
-	funcInfo2 := generatepgl.NewFuncInfo(setfunName)
-	funcInfo2.FuncParam[csvPath] = generatepgl.GoString
-	funcInfo2.FuncContent = fmt.Sprintf(
-		`    if %s == nil {
-		%s = make(%s)
-	}
-	tem := %s(%s)
-	%s  = tem`,
-		varName, varName, vartypeName, getfunName, csvPath, varName)
-	genGoLang.WriteFunc(funcInfo2)
+	funcInfo := generatepgl.NewFuncInfo(setfunName)
+	funcInfo.FuncParam[csvPath] = generatepgl.GoString
+	funcInfo.FuncContent = fmt.Sprintf(
+		`  	defer xlog.RecoverToStd()
+	%s.Store(%s(csvpath))`,
+		varName, getfunName)
+	genGoLang.WriteFunc(funcInfo)
+}
+
+func getCsvData(getfunName string, csvtypeName string, excelContent [][]string, exclefileName string, structName string, genGoLang *generatepgl.GenerGoLang) {
 	// 写方法3
-	funcInfo3 := generatepgl.NewFuncInfo(getfunName)
-	funcInfo3.FuncParam["csvpath"] = generatepgl.GoString
-	funcInfo3.FuncReturn["tem"] = vartypeName
+	funcInfo := generatepgl.NewFuncInfo(getfunName)
+	funcInfo.FuncParam["csvpath"] = generatepgl.GoString
+	funcInfo.FuncReturn["tem"] = csvtypeName
 	idName := xutil.Capitalize(excelContent[0][0])
-	funcInfo3.FuncContent = fmt.Sprintf(
-		`    csvmapdata := csvparse.GetCsvMapData(csvpath + "/%s.csv")
+	funcInfo.FuncContent = fmt.Sprintf(
+`    csvmapdata := csvparse.GetCsvMapData(csvpath + "/%s.csv")
 	tem := make(%s)
 	for _, filedData := range csvmapdata {
 		one := new(%s)
@@ -109,22 +127,34 @@ func WriteToGoFile(exclefileName string, excelContent [][]string) {
 			}
 		}
 		tem[one.%s] = one
-	}`,
-		exclefileName, vartypeName, structName,idName,idName,idName )
-	genGoLang.WriteFunc(funcInfo3)
-	
+	}`,exclefileName, csvtypeName, structName, idName, idName, idName)
+	genGoLang.WriteFunc(funcInfo)
+}
+
+func getptrFunc(structName string, getAllfunName string, excelContent [][]string, genGoLang *generatepgl.GenerGoLang) {
 	// 写方法4
 	funcInfo4 := generatepgl.NewFuncInfo(fmt.Sprintf("Get%sPtr", structName))
 	funcInfo4.FuncContent = fmt.Sprintf(
-		`    data, ok := %s[%s];
-	if  !ok  {
+		`    alldata := %s()
+	if alldata == nil {
 		return nil
-	}`,varName,excelContent[0][0])
+	}
+	if data, ok := alldata[%s]; ok {
+		return data
+	}`, getAllfunName, excelContent[0][0])
 	funcInfo4.FuncParam[excelContent[0][0]] = excelContent[1][0]
-	returnName := fmt.Sprintf("%s","data")
-	funcInfo4.FuncReturn[returnName] = fmt.Sprintf("*%s", structName)
+	funcInfo4.FuncReturn["nil"] = fmt.Sprintf("*%s", structName)
 	genGoLang.WriteFunc(funcInfo4)
-	
-	// 一次性写入所有数据
-	fs.WriteString(genGoLang.String())
+}
+
+func getAllfun(getAllfunName string, varName string, csvtypeName string, genGoLang *generatepgl.GenerGoLang) {
+	// getAll
+	funcInfo := generatepgl.NewFuncInfo(getAllfunName)
+	funcInfo.FuncContent = fmt.Sprintf(
+		`    val := %s.Load()
+	if data, ok := val.(%s); ok {
+		return data
+	}`, varName, csvtypeName)
+	funcInfo.FuncReturn["nil"] = fmt.Sprintf("%s", csvtypeName)
+	genGoLang.WriteFunc(funcInfo)
 }

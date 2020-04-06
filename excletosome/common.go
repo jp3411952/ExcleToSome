@@ -9,7 +9,7 @@ package excletosome
 
 import (
 	"fmt"
-	"github.com/showgo/xutil"
+	"github.com/wengo/xutil"
 	"github.com/tealeg/xlsx"
 	"path/filepath"
 	"strings"
@@ -19,18 +19,44 @@ import (
 // 定义处理行数
 type HandleFunc func(exclefileName string, wg *sync.WaitGroup)
 
-// 处理函数
-var HandlerMap map[string]HandleFunc
+// excle处理函数
+var ExlceHandlerMap map[string]HandleFunc
+
+// json处理函数
+var JsonHandlerMap map[string]HandleFunc
 
 func init() {
-	HandlerMap = make(map[string]HandleFunc)
-	HandlerMap["csv"] = ToCsv
-	HandlerMap["go"] = ToGoFile
-	HandlerMap["all"] = ToAllFile
+	ExlceHandlerMap = make(map[string]HandleFunc)
+	JsonHandlerMap = make(map[string]HandleFunc)
+	ExlceHandlerMap["csv"] = ToCsv
+	ExlceHandlerMap["go"] = ToGoFile
+	ExlceHandlerMap["all"] = ToAllFile
+	JsonHandlerMap["go"] = JsonToGo
 }
 
-func GetHandlerFunc(handleName string) HandleFunc {
-	return HandlerMap[handleName]
+func GetHandlerFunc() HandleFunc {
+	
+	//根据输入的类型及输出类型获得对应的处理函数
+	switch Intype {
+	case "json": //json 的输出方法
+		if fun,ok := JsonHandlerMap[OutType] ; ok  {
+			return fun
+		}
+	case "xlsx": //xlsx 输出的方法
+		if fun,ok := ExlceHandlerMap[OutType] ; ok  {
+			return fun
+		}
+	}
+
+	return  nil
+}
+
+func GetInPath() string {
+	switch Intype {
+	case "json","xlsx":
+		return InPath
+	}
+return ""
 }
 
 
@@ -93,12 +119,16 @@ func GetNoFiledColIndex(row *xlsx.Row) map[int]bool {
 // 处理说有文件
 func ToAllFile(exclefileName string, wg *sync.WaitGroup) {
 	defer wg.Done()
-	for k, hanler := range HandlerMap {
+	for k, hanler := range ExlceHandlerMap {
 		if strings.Compare(k, "all") == 0 {
 			continue
 		}
 		wg.Add(1)
 		go hanler(exclefileName, wg)
 	}
+	
+}
+
+func ReadJson()  {
 	
 }

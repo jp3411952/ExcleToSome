@@ -9,7 +9,7 @@ package excletosome
 
 import (
 	"fmt"
-	"github.com/showgo/xutil"
+	"github.com/wengo/xutil"
 	"os"
 	"path"
 )
