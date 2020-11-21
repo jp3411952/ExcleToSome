@@ -9,7 +9,7 @@ package generatepgl
 
 import (
 	"fmt"
-	"github.com/wengo/xutil/strutil"
+	"github.com/zjytra/wengo/xutil/strutil"
 	"strings"
 )
 

@@ -9,11 +9,13 @@ package excletosome
 
 import (
 	"fmt"
+	"github.com/tealeg/xlsx"
+	"github.com/zjytra/wengo/xutil"
+	"github.com/zjytra/wengo/xutil/osutil"
+	"github.com/zjytra/wengo/xutil/strutil"
 	"path/filepath"
 	"strings"
 	"sync"
-	"wengo/xutil/osutil"
-	"wengo/xutil/strutil"
 )
 
 // 定义处理行数
@@ -76,7 +78,7 @@ func readxlsx(exclefileName string) [][]string {
 		fmt.Printf(exclefileName, "没有Sheet1 表,只使用Sheet1")
 		return nil
 	}
-	rownum := len(sheet1.Rows)
+	rownum := sheet1.MaxRow
 	if rownum == 0 {
 		return nil
 	}

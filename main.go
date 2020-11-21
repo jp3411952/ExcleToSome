@@ -8,7 +8,6 @@
 package main
 
 import (
-	"github.com/zjytra/wengo"
 	"ExcleToSome/excletosome"
 	"fmt"
 	"github.com/zjytra/wengo/xutil"

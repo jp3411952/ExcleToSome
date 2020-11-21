@@ -9,7 +9,7 @@ package excletosome
 
 import (
 	"fmt"
-	"github.com/wengo/xutil/osutil"
+	"github.com/zjytra/wengo/xutil/osutil"
 	"os"
 	"path"
 )

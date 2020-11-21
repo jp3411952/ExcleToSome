@@ -10,9 +10,9 @@ package excletosome
 import (
 	"ExcleToSome/generatepgl"
 	"fmt"
-	"github.com/wengo/xutil"
-	"github.com/wengo/xutil/osutil"
-	"github.com/wengo/xutil/strutil"
+	"github.com/zjytra/wengo/xutil"
+	"github.com/zjytra/wengo/xutil/osutil"
+	"github.com/zjytra/wengo/xutil/strutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -74,9 +74,9 @@ func writeHeder(genGoLang *generatepgl.GenerGoLang) {
 	genGoLang.WriteMoreNextLine(1)
 	genGoLang.WriteImport([]string{
 		xutil.GetPackageStr("fmt"),
-		xutil.GetPackageStr("github.com/wengo/csvparse"),
-		xutil.GetPackageStr("github.com/wengo/xutil"),
-		xutil.GetPackageStr("github.com/wengo/xlog"),
+		xutil.GetPackageStr("github.com/zjytra/wengo/csvparse"),
+		xutil.GetPackageStr("github.com/zjytra/wengo/xutil"),
+		xutil.GetPackageStr("github.com/zjytra/wengo/xlog"),
 		xutil.GetPackageStr("sync/atomic")})
 }
 

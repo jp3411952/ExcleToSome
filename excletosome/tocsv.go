@@ -10,8 +10,8 @@ package excletosome
 import (
 	"encoding/csv"
 	"fmt"
-	"wengo/xutil"
-	"wengo/xutil/osutil"
+	"github.com/zjytra/wengo/xutil"
+	"github.com/zjytra/wengo/xutil/osutil"
 	"os"
 	"path/filepath"
 	"strings"
