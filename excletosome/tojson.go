@@ -10,7 +10,7 @@ package excletosome
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/wengo/xutil"
+	"github.com/wengo/xutil/osutil"
 	"os"
 	"path"
 )
@@ -29,7 +29,7 @@ func map2JsonStr(dataDict map[string]interface{}) string {
 
 //写JSON文件
 func writeJSON(paths string, fileName string, dataDict map[string]interface{}) {
-	if !xutil.MakeDirAll(paths) {
+	if !osutil.MakeDirAll(paths) {
 		return
 	}
 	realpath := path.Join(paths,fileName+".json")

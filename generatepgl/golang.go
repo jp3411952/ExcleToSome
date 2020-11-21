@@ -9,7 +9,7 @@ package generatepgl
 
 import (
 	"fmt"
-	"github.com/wengo/xutil"
+	"github.com/wengo/xutil/strutil"
 	"strings"
 )
 
@@ -168,7 +168,7 @@ func (ggl *GenerGoLang)WriteFunc(funcInfo *FuncInfo)    {
 	ggl.WriteStartBrace()
 	
 	// 方法体内容
-	if !xutil.StringIsNil(funcInfo.FuncContent) {
+	if !strutil.StringIsNil(funcInfo.FuncContent) {
 		ggl.StringBuilderWrite(funcInfo.FuncContent)
 		ggl.WriteNextLine()
 	}
@@ -181,7 +181,7 @@ func (ggl *GenerGoLang)WriteFunc(funcInfo *FuncInfo)    {
 
 //写注释
 func (ggl *GenerGoLang) WriteComment(str string) {
-	if !xutil.StringIsNil(str) {
+	if !strutil.StringIsNil(str) {
 		ggl.StringBuilderWrite(CommentLine)
 		ggl.StringBuilderWrite(str)
 		ggl.WriteNextLine()

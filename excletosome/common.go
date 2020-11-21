@@ -9,11 +9,11 @@ package excletosome
 
 import (
 	"fmt"
-	"github.com/wengo/xutil"
-	"github.com/tealeg/xlsx"
 	"path/filepath"
 	"strings"
 	"sync"
+	"wengo/xutil/osutil"
+	"wengo/xutil/strutil"
 )
 
 // 定义处理行数
@@ -61,7 +61,7 @@ return ""
 
 
 func ChechAndMakeDir(dir string) bool{
-	return !xutil.MakeDirAll(dir)
+	return !osutil.MakeDirAll(dir)
 }
 
 // 读取excle文件
@@ -109,7 +109,7 @@ func GetNoFiledColIndex(row *xlsx.Row) map[int]bool {
 	}
 	noDataColIndex := make(map[int]bool)
 	for cellj, cell := range row.Cells {
-		if xutil.StringIsNil(cell.String()) {
+		if strutil.StringIsNil(cell.String()) {
 			noDataColIndex[cellj] = true
 		}
 	}

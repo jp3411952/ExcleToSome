@@ -10,7 +10,8 @@ package excletosome
 import (
 	"encoding/csv"
 	"fmt"
-	"github.com/wengo/xutil"
+	"wengo/xutil"
+	"wengo/xutil/osutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -30,7 +31,7 @@ func ToCsv(exclefileName string ,wg *sync.WaitGroup)  {
 
 
 func WriteToCsv(exclefileName string,excelContent [][]string)  {
-	if !xutil.MakeDirAll(csvoutdir) {
+	if !osutil.MakeDirAll(csvoutdir) {
 		fmt.Printf("csvoutdir = ",csvoutdir)
 		return
 	}

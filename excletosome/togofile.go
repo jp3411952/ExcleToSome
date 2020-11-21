@@ -8,9 +8,11 @@
 package excletosome
 
 import (
-	"../generatepgl"
+	"ExcleToSome/generatepgl"
 	"fmt"
 	"github.com/wengo/xutil"
+	"github.com/wengo/xutil/osutil"
+	"github.com/wengo/xutil/strutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -26,7 +28,7 @@ func ToGoFile(exclefileName string, wg *sync.WaitGroup) {
 }
 
 func WriteToGoFile(exclefileName string, excelContent [][]string) {
-	if !xutil.MakeDirAll(gostrcutdir) || xutil.StringIsNil(packagename) {
+	if !osutil.MakeDirAll(gostrcutdir) || strutil.StringIsNil(packagename) {
 		fmt.Printf("gostrcutdir = ", gostrcutdir, "packagename = ", gostrcutdir)
 		return
 	}
@@ -55,7 +57,7 @@ func WriteToGoFile(exclefileName string, excelContent [][]string) {
 	// 写结构体内容
 	writeStruct(genGoLang, structName, excelContent, exclefileName)
 	setfunName := fmt.Sprintf("Set%sMapData", structName)
-	getfunName := fmt.Sprintf("get%sUsedData", structName)
+	getfunName := fmt.Sprintf("load%sUsedData", structName)
 	// 写方法
 	setcsvData(setfunName, varName, getfunName, genGoLang)
 	getCsvData(getfunName, csvtypeName, excelContent, exclefileName, structName, genGoLang)

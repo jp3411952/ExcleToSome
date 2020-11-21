@@ -8,7 +8,7 @@
 package excletosome
 
 import (
-	"github.com/widuu/goini"
+	"widuu/goini"
 )
 
 var conf *goini.Config

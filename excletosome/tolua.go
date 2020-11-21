@@ -9,14 +9,14 @@ package excletosome
 
 import (
 	"fmt"
-	"github.com/wengo/xutil"
+	"github.com/wengo/xutil/osutil"
 	"os"
 	"path"
 )
 
 //写Lua文件
 func writeLuaTable(paths string, fileName string, dataDict interface{}) {
-	if !xutil.MakeDirAll(paths) {
+	if !osutil.MakeDirAll(paths) {
 		return
 	}
 	realpath := path.Join(paths,fileName+".lua")

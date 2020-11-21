@@ -8,9 +8,11 @@
 package main
 
 import (
-	"./excletosome"
+	"github.com/zjytra/wengo"
+	"ExcleToSome/excletosome"
 	"fmt"
-	"github.com/wengo/xutil"
+	"github.com/zjytra/wengo/xutil"
+	"github.com/zjytra/wengo/xutil/strutil"
 	"os"
 	"path/filepath"
 	"strings"
@@ -30,7 +32,7 @@ func main() {
 		time.Sleep(time.Second * 5)
 		return
 	}
-	if xutil.StringIsNil(excletosome.InPath) {
+	if strutil.StringIsNil(excletosome.InPath) {
 		return
 	}
 	ReadDirFiles()
