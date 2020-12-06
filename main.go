@@ -10,8 +10,8 @@ package main
 import (
 	"ExcleToSome/excletosome"
 	"fmt"
-	"github.com/zjytra/wengo/xutil"
-	"github.com/zjytra/wengo/xutil/strutil"
+	"github.com/zjytra/devlop/xutil"
+	"github.com/zjytra/devlop/xutil/strutil"
 	"os"
 	"path/filepath"
 	"strings"
