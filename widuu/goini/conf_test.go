@@ -6,7 +6,7 @@ import (
 )
 
 func Test(t *testing.T) {
-	conf := SetConfig("./conf/conf.ini")
+	conf := SetConfig("./conf/conf.json")
 	username := conf.GetValue("database", "username")
 	fmt.Println(username) //root
 	conf.DeleteValue("database", "username")

@@ -1,0 +1,10 @@
+app_kind,app_name,out_addr,out_prot,goroutines_size,msglen_size,max_msglen,write_cap_num,checklink_s,max_rec_msg_ps,sys_stauts_port,msg_isencrypt
+int32,string,string,string,int,uint8,int32,int,int,int,int,bool
+服务器类型,服务器名称,外部连接的地址,外部连接端口,"go协程池数量,连接数的两倍多一点",消息包长字节大小2,消息最大长度,连接写的包队列大小,检查连接存活时间间隔秒,每秒最大收包数量,系统状态端口,消息是否加密
+1,客户端_1,127.0.0.1,20002,30000,4,65000,200,50,100,30001,TRUE
+2,MsgServer_11 ,127.0.0.1,20001,20500,4,65000,200,50,100,30002,FALSE
+3,LoginServer_12,127.0.0.1,20002,20500,4,65000,200,50,100,30003,FALSE
+4,Gate_13,127.0.0.1,20003,20500,4,65000,200,50,100,30004,TRUE
+4,Gate_14,127.0.0.1,20004,20500,4,65000,200,50,100,30005,TRUE
+5,DataCenter_5,127.0.0.1,20005,300,4,65000,200,50,100,30006,FALSE
+6,GameServer_16,127.0.0.1,20006,300,4,65000,200,50,100,30007,FALSE

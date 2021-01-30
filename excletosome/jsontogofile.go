@@ -7,8 +7,6 @@
 
 package excletosome
 
-import "sync"
-
-func JsonToGo(exclefileName string, wg *sync.WaitGroup) {
+func JsonToGo(exclefileName string) {
 
 }

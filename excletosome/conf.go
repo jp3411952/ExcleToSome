@@ -8,36 +8,39 @@
 package excletosome
 
 import (
-	"ExcleToSome/widuu/goini"
+	"encoding/json"
+	"os"
 )
 
-var conf *goini.Config
+var Conf *ConfJson
 
-var InPath string
-var Intype string
-var OutType string
-var csvoutdir string
-var gostrcutdir string
-var sqloutdir string
-var packagename string
-var outType string
-var CsvPath string
-var jsoninpath string
-var jsonoutpath string
-var jsonPackageName string
 
-func ReadConf() {
-	conf = goini.SetConfig( "conf.ini")
-	conf.ReadList()
-	InPath = conf.GetValue("transfrom", "inpath")
-	Intype = conf.GetValue("transfrom", "intype")
-	OutType = conf.GetValue("transfrom", "outtype")
-	csvoutdir = conf.GetValue("csv", "outpath")
-	gostrcutdir = conf.GetValue("gostrcut", "outpath")
-	packagename =conf.GetValue("gostrcut", "packagename")
-	CsvPath = conf.GetValue("gostrcut", "csvpath")
-	sqloutdir = conf.GetValue("sql", "outpath")
-	jsonoutpath = conf.GetValue("json","outpath")
-	jsonPackageName = conf.GetValue("json","packagename")
+type ConfJson struct {
+	InPath string `json:InPath`
+	Intype string `json:Intype`
+	OutType string `json:OutType`
+	ServerOutCsv string   `json:ServerOutCsv`//服务器cvs
+	GostrcutOutpath string `json:GostrcutOutpath`
+	GopakName string  `json:GopakName`
+	ClientOutCsv string  `json:ClientOutCsv`//客户端csv
+	CsharpOut string  `json:CsharpOut`//c#输出目录
+	LuaTOutPath string `json:LuaTOutPath`
 }
 
+
+
+func ReadConfJson() {
+	Conf = new(ConfJson)
+	filePtr, err := os.Open("conf.json")
+	if err != nil {
+		return
+	}
+	defer filePtr.Close()
+	// 创建json解码器
+	decoder := json.NewDecoder(filePtr)
+	err = decoder.Decode(Conf)
+	if err != nil {
+		return
+	}
+
+}

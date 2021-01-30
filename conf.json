@@ -1,0 +1,15 @@
+
+{
+  "InPath" : "excle",
+  "Intype" : "xlsx",
+  "OutType" : "A",
+  "ServerOutCsv": "D:\\work\\WorldGame\\Server\\wengo\\csv",
+  "GostrcutOutpath": "D:\\work\\WorldGame\\Server\\wengo\\csvsys\\csvdata",
+  "GopakName" : "csvdata",
+  "ClientOutCsv": "D:\\work\\WorldGame\\Client\\xluaminiGame\\Assets\\AddressableRes\\Csv",
+  "CsharpOut" : "D:\\work\\WorldGame\\Client\\xluaminiGame\\Assets\\Scripts\\CsvSys",
+  "LuaTOutPath": "D:\\work\\WorldGame\\Client\\xluaminiGame\\Assets\\AddressableRes\\LuaScripts\\LuaCfg"
+}
+
+
+

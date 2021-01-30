@@ -10,7 +10,7 @@ package excletosome
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/zjytra/wengo/xutil/osutil"
+	"github.com/zjytra/devlop/xutil/osutil"
 	"os"
 	"path"
 )

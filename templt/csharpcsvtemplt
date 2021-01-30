@@ -1,0 +1,72 @@
+using System;
+using UnityEngine;
+using UnityEngine.ResourceManagement.AsyncOperations;
+//生成文件不要改哦
+public class %s : CsvMgr<%s,%s>
+{
+%s
+
+    public %s()
+    {
+        csvName = "%s";
+    }
+    public override void LoadCsvCB(AsyncOperationHandle<TextAsset> handle)
+    {
+        try
+        {
+            if (!handle.IsDone)
+            {
+                return;
+            }
+            TextAsset ts = handle.Result;
+            if (ts == null)
+            {
+                return;
+            }
+            //
+            string[] csvRows = ts.text.Split('\n');
+            if (csvRows.Length < NotUseRow)
+            {
+                Debug.LogWarningFormat("配置表{0}  {1}行数不够",csvName,csvRows.Length);
+                return;
+            }
+            CsvDataDictionary.Clear();
+            string[] rowName = csvRows[0].Split(',');
+            string[] rowType = csvRows[1].Split(',');
+            int collen = rowName.Length;
+            int col = 0;
+            bool typeIsMatch;
+            for (int i = 0; i < csvRows.Length - 1; i++)
+            {
+                if (i < NotUseRow)
+                    continue;
+                %s oneData = new %s();
+                string[] oneRow = csvRows[i].Split(',');
+                if (collen != oneRow.Length)
+                {
+                    continue;
+                }
+                col = 0;
+                //有注释符号的那行被注释掉
+                if (oneRow[col].StartsWith("#"))
+                {
+                    continue;
+                }
+
+                %s
+
+                if (hasData(oneData.%s))
+                {
+                    Debug.LogWarningFormat("{0}配置表id = {1} 重复后面的数据覆盖前面的",csvName,oneData.%s);
+                }
+                AddData(oneData.%s,oneData);
+            }
+            Release();
+        }
+        catch (Exception e)
+        {
+            Debug.LogWarningFormat(e.ToString());
+        }
+    }
+}
+

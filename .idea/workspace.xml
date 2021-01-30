@@ -1,10 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="53200ed9-c4f6-4d44-aa26-ef6c203c747d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/conf.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/excle/网络配置.xlsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/excletosome/readxlsx.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/excletosome/tocsharp.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/excletosome/walkfile.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templt/csharpcsvtemplt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/excle/networkconf.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/excle/networkconf.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conf.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/dbconf.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/csv/serverconf.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/csvdata/dbconf.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/csvdata/serverconf.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/excle/dbconf.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/excle/数据库.xlsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excle/excleTool.go" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/excle/networkconf.xlsx" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/excleToSome.exe" beforeDir="false" afterPath="$PROJECT_DIR$/excleToSome.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excletosome/common.go" beforeDir="false" afterPath="$PROJECT_DIR$/excletosome/common.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excletosome/conf.go" beforeDir="false" afterPath="$PROJECT_DIR$/excletosome/conf.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excletosome/jsontogofile.go" beforeDir="false" afterPath="$PROJECT_DIR$/excletosome/jsontogofile.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excletosome/tocsv.go" beforeDir="false" afterPath="$PROJECT_DIR$/excletosome/tocsv.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excletosome/togofile.go" beforeDir="false" afterPath="$PROJECT_DIR$/excletosome/togofile.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excletosome/tojson.go" beforeDir="false" afterPath="$PROJECT_DIR$/excletosome/tojson.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/excletosome/tolua.go" beforeDir="false" afterPath="$PROJECT_DIR$/excletosome/tolua.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/go_build_main_go.exe" beforeDir="false" afterPath="$PROJECT_DIR$/go_build_main_go.exe" afterDir="false" />
@@ -50,7 +88,7 @@
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="go.sdk.automatically.set" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../Server/wengo" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -66,6 +104,10 @@
       <recent name="E:\goproject\ExcleToMo\excle" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\work\goProject\ExcleToSome\templt" />
+      <recent name="D:\work\goProject\ExcleToSome\csvdata" />
+      <recent name="D:\work\goProject\ExcleToSome\csv" />
+      <recent name="D:\work\goProject\ExcleToSome\excle" />
       <recent name="E:\goproject\ExcleToMo\excletoother" />
     </key>
   </component>
@@ -73,7 +115,7 @@
     <configuration name="go build main.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="ExcleToMo" />
       <working_directory value="$PROJECT_DIR$/" />
-      <parameters value="-outType=all" />
+      <parameters value="-toplatform=S" />
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/main.go" />
       <directory value="$PROJECT_DIR$/" />
@@ -103,54 +145,98 @@
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1605941058958">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1611993747397">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1605941058958" />
-    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1605927741471">
+    <state x="414" y="175" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1611993747397" />
+    <state x="687" y="327" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1612001699266">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1605927741471" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1607250149351">
+    <state x="687" y="327" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1040@0.0.1920.1040" timestamp="1612001699266" />
+    <state width="828" height="466" key="DebuggerActiveHint" timestamp="1612002640302">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1607250149351" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1607250149351">
+    <state width="828" height="466" key="DebuggerActiveHint/0.0.1920.1040@0.0.1920.1040" timestamp="1612002640302" />
+    <state x="740" y="274" key="FileChooserDialogImpl" timestamp="1611992465312">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1607250149351" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1607250149351">
+    <state x="740" y="274" key="FileChooserDialogImpl/0.0.1920.1040@0.0.1920.1040" timestamp="1611992465312" />
+    <state width="1877" height="217" key="GridCell.Tab.0.bottom" timestamp="1612006287811">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1607250149351" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1607250149351">
+    <state width="1877" height="217" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1612006287811" />
+    <state width="1877" height="217" key="GridCell.Tab.0.center" timestamp="1612006287811">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1607250149351" />
-    <state width="1877" height="186" key="GridCell.Tab.1.bottom" timestamp="1600443770635">
+    <state width="1877" height="217" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1612006287811" />
+    <state width="1877" height="217" key="GridCell.Tab.0.left" timestamp="1612006287811">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1600443770635" />
-    <state width="1877" height="186" key="GridCell.Tab.1.center" timestamp="1600443770635">
+    <state width="1877" height="217" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1612006287811" />
+    <state width="1877" height="217" key="GridCell.Tab.0.right" timestamp="1612006287811">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1600443770635" />
-    <state width="1877" height="186" key="GridCell.Tab.1.left" timestamp="1600443770635">
+    <state width="1877" height="217" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1612006287811" />
+    <state width="1877" height="179" key="GridCell.Tab.1.bottom" timestamp="1612004295831">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1600443770635" />
-    <state width="1877" height="186" key="GridCell.Tab.1.right" timestamp="1600443770635">
+    <state width="1877" height="179" key="GridCell.Tab.1.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1612004295831" />
+    <state width="1877" height="179" key="GridCell.Tab.1.center" timestamp="1612004295831">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="186" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1600443770635" />
-    <state x="739" y="141" key="SettingsEditor" timestamp="1605943074431">
+    <state width="1877" height="179" key="GridCell.Tab.1.center/0.0.1920.1040@0.0.1920.1040" timestamp="1612004295831" />
+    <state width="1877" height="179" key="GridCell.Tab.1.left" timestamp="1612004295831">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="739" y="141" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1605943074431" />
+    <state width="1877" height="179" key="GridCell.Tab.1.left/0.0.1920.1040@0.0.1920.1040" timestamp="1612004295831" />
+    <state width="1877" height="179" key="GridCell.Tab.1.right" timestamp="1612004295831">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="179" key="GridCell.Tab.1.right/0.0.1920.1040@0.0.1920.1040" timestamp="1612004295831" />
+    <state x="739" y="141" key="SettingsEditor" timestamp="1607856707622">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="739" y="141" key="SettingsEditor/0.0.1920.1040@0.0.1920.1040" timestamp="1607856707622" />
+    <state width="960" height="520" key="XDebugger.FullValuePopup" timestamp="1611994308438">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="960" height="520" key="XDebugger.FullValuePopup/0.0.1920.1040@0.0.1920.1040" timestamp="1611994308438" />
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog" timestamp="1607953629756">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="com.intellij.history.integration.ui.views.FileHistoryDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1607953629756" />
+    <state x="498" y="0" width="1438" height="753" maximized="true" key="dock-window-1" timestamp="1611995881855">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="498" y="0" width="1438" height="753" maximized="true" key="dock-window-1/0.0.1920.1040@0.0.1920.1040" timestamp="1611995881855" />
+    <state x="754" y="263" width="596" height="602" key="find.popup" timestamp="1612001920590">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="754" y="263" width="596" height="602" key="find.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1612001920590" />
+    <state x="625" y="236" width="672" height="678" key="search.everywhere.popup" timestamp="1611995732060">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="625" y="236" width="672" height="678" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1611995732060" />
+    <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog" timestamp="1611995253186">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="682" y="431" key="vcs.readOnlyHandler.ReadOnlyStatusDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1611995253186" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -170,36 +256,18 @@
           <line>86</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
+          <url>file://$PROJECT_DIR$/excletosome/tocsharp.go</url>
+          <line>88</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
     <watches-manager>
       <configuration name="GoApplicationRunConfiguration">
         <watch expression="setval" />
+        <watch expression="platformCols" />
       </configuration>
     </watches-manager>
-  </component>
-  <component name="debuggerHistoryManager">
-    <expressions id="breakpointCondition">
-      <expression>
-        <expression-string>&quot;test.xlsx&quot; == exclefileName</expression-string>
-        <language-id>go</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>&quot;test.xlsx&quot; ==</expression-string>
-        <language-id>go</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>test.xlsx</expression-string>
-        <language-id>go</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>exclefileName == &quot;test.xlsx&quot;</expression-string>
-        <language-id>go</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-    </expressions>
   </component>
 </project>
